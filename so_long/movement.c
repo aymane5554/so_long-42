@@ -33,7 +33,7 @@ void	moveup(t_game *game, t_player *player)
 		}
 		player->y--;
 		mlx_put_image_to_window(game->mlx, game->win,
-				player->img, player->x * 32, player->y * 32);
+			player->img, player->x * 32, player->y * 32);
 		player->moves++;
 	}
 }
@@ -59,7 +59,7 @@ void	movedown(t_game *game, t_player *player)
 		}
 		player->y++;
 		mlx_put_image_to_window(game->mlx, game->win,
-				player->img, player->x * 32, player->y * 32);
+			player->img, player->x * 32, player->y * 32);
 		player->moves++;
 	}
 }
@@ -85,7 +85,7 @@ void	moveright(t_game *game, t_player *player)
 		}
 		player->x++;
 		mlx_put_image_to_window(game->mlx, game->win,
-				player->img, player->x * 32, player->y * 32);
+			player->img, player->x * 32, player->y * 32);
 		player->moves++;
 	}
 }
@@ -111,8 +111,7 @@ void	moveleft(t_game *game, t_player *player)
 		}
 		player->x--;
 		mlx_put_image_to_window(game->mlx, game->win,
-				player->left_img, player->x * 32, player->y * 32);
+			player->left_img, player->x * 32, player->y * 32);
 		player->moves++;
 	}
 }
- 

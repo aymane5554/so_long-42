@@ -87,4 +87,3 @@ void	moveleft(t_game game, t_player *player)
 		dislay_numbers(game, player->moves);
 	}
 }
- 
