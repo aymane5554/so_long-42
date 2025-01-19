@@ -72,4 +72,6 @@ void	free_images(t_arg *arg);
 int		file_line(char *file);
 int		ft_close(t_arg *arg);
 char	**mapdup(t_game *game);
+void	check_all_images(void);
+
 #endif

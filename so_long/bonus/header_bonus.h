@@ -96,4 +96,6 @@ void	init_enemy_images(t_game	*game);
 void	move_enemies(t_game *game);
 int		ft_close(t_arg *arg);
 char	**mapdup(t_game *game);
+void	check_all_images(void);
+
 #endif

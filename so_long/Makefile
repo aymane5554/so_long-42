@@ -1,9 +1,9 @@
 CC = cc 
 CFLAGS = -Wall -Wextra -Werror
 NAME = so_long
-SHARED_SRCS = get_next_line.c get_next_line_utils.c tests.c path_to_coins.c utils.c
+SHARED_SRCS = get_next_line.c get_next_line_utils.c tests.c path_to_coins.c utils.c check_images.c
 SHARED_OBJS = $(SHARED_SRCS:%.c=%.o)
-SOURCES = main.c movement.c ending.c init.c display_moves.c errors.c 
+SOURCES = main.c movement.c ending.c init.c display_moves.c errors.c
 OBJS = $(SOURCES:%.c=%.o)
 BONUS_SOURCES = bonus/main_bonus.c bonus/movement_bonus.c bonus/enemy_bonus.c bonus/ending_bonus.c bonus/counter_bonus.c bonus/animation_bonus.c bonus/init_bonus.c bonus/display_moves_bonus.c bonus/errors_bonus.c 
 BONUS_OBJS = $(BONUS_SOURCES:%_bonus.c=%_bonus.o)

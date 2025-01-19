@@ -58,6 +58,7 @@ int	main(int argc, char **argv)
 	t_player	player;
 	t_arg		arg;
 
+	check_all_images();
 	map_check(argc, argv);
 	game.map = load_map(argv[1]);
 	game.width_height = map_dimension(game.map);
