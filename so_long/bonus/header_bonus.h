@@ -13,7 +13,7 @@
 #ifndef HEADER_BONUS_H
 # define HEADER_BONUS_H
 
-# include "../mlx/mlx.h"
+# include <mlx.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include <time.h>

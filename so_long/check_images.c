@@ -12,77 +12,107 @@
 
 #include "header.h"
 
-char	check_game_images(void)
+int	check_animations(void);
+int	check_animations1(void);
+
+int	check_images(void)
 {
-	if (open("coin.xpm", O_RDONLY) == -1 || open("door.xpm", O_RDONLY) == -1)
-		return (-1);
-	if (open("enemy_right.xpm", O_RDONLY) == -1
-		|| open("enemy_left.xpm", O_RDONLY) == -1)
-		return (-1);
-	if (open("ground.xpm", O_RDONLY) == -1 || open("lost.xpm", O_RDONLY) == -1)
-		return (-1);
-	if (open("player_left.xpm", O_RDONLY) == -1
-		|| open("player.xpm", O_RDONLY) == -1)
-		return (-1);
-	if (open("playerindoor.xpm", O_RDONLY) == -1)
-		return (-1);
-	if (open("wall.xpm", O_RDONLY) == -1 || open("wall01.xpm", O_RDONLY) == -1)
-		return (-1);
-	if (open("won.xpm", O_RDONLY) == -1)
-		return (-1);
-	return (1);
+	int		fd;
+
+	fd = open("textures/coin.xpm", O_RDONLY);
+	if (fd == -1)
+		return (1);
+	close(fd);
+	fd = open("textures/door.xpm", O_RDONLY);
+	if (fd == -1)
+		return (1);
+	close(fd);
+	fd = open("textures/enemy_left.xpm", O_RDONLY);
+	if (fd == -1)
+		return (1);
+	close(fd);
+	fd = open("textures/enemy_right.xpm", O_RDONLY);
+	if (fd == -1)
+		return (1);
+	close(fd);
+	fd = open("textures/ground.xpm", O_RDONLY);
+	if (fd == -1)
+		return (1);
+	close(fd);
+	return (0);
 }
 
-char	check_number_images(void)
+int	check_images0(void)
 {
-	if (open("0.xpm", O_RDONLY) == -1 || open("1.xpm", O_RDONLY) == -1)
-		return (-1);
-	if (open("2.xpm", O_RDONLY) == -1 || open("3.xpm", O_RDONLY) == -1)
-		return (-1);
-	if (open("4.xpm", O_RDONLY) == -1 || open("5.xpm", O_RDONLY) == -1)
-		return (-1);
-	if (open("6.xpm", O_RDONLY) == -1 || open("7.xpm", O_RDONLY) == -1)
-		return (-1);
-	if (open("8.xpm", O_RDONLY) == -1 || open("9.xpm", O_RDONLY) == -1)
-		return (-1);
-	return (1);
+	int		fd;
+
+	fd = open("textures/lost.xpm", O_RDONLY);
+	if (fd == -1)
+		return (1);
+	close(fd);
+	fd = open("textures/player_left.xpm", O_RDONLY);
+	if (fd == -1)
+		return (1);
+	close(fd);
+	fd = open("textures/player.xpm", O_RDONLY);
+	if (fd == -1)
+		return (1);
+	close(fd);
+	fd = open("textures/playerindoor.xpm", O_RDONLY);
+	if (fd == -1)
+		return (1);
+	close(fd);
+	fd = open("textures/wall.xpm", O_RDONLY);
+	if (fd == -1)
+		return (1);
+	close(fd);
+	return (0);
 }
 
-char	check_animation_frames(void)
+int	check_images1(void)
 {
-	if (open("anime0.xpm", O_RDONLY) == -1
-		|| open("anime1.xpm", O_RDONLY) == -1)
-		return (-1);
-	if (open("anime2.xpm", O_RDONLY) == -1
-		|| open("anime3.xpm", O_RDONLY) == -1)
-		return (-1);
-	if (open("anime4.xpm", O_RDONLY) == -1
-		|| open("anime5.xpm", O_RDONLY) == -1)
-		return (-1);
-	if (open("anime6.xpm", O_RDONLY) == -1
-		|| open("anime7.xpm", O_RDONLY) == -1)
-		return (-1);
-	if (open("ranime0.xpm", O_RDONLY) == -1
-		|| open("ranime1.xpm", O_RDONLY) == -1)
-		return (-1);
-	if (open("ranime2.xpm", O_RDONLY) == -1
-		|| open("ranime3.xpm", O_RDONLY) == -1)
-		return (-1);
-	if (open("ranime4.xpm", O_RDONLY) == -1
-		|| open("ranime5.xpm", O_RDONLY) == -1)
-		return (-1);
-	if (open("ranime6.xpm", O_RDONLY) == -1
-		|| open("ranime7.xpm", O_RDONLY) == -1)
-		return (-1);
-	return (1);
+	int		fd;
+
+	fd = open("textures/wall01.xpm", O_RDONLY);
+	if (fd == -1)
+		return (1);
+	close(fd);
+	fd = open("textures/won.xpm", O_RDONLY);
+	if (fd == -1)
+		return (1);
+	close(fd);
+	return (0);
+}
+
+int	check_numbers(void)
+{
+	char	*template;
+	int		i;
+	int		fd;
+	char	*filename;
+
+	i = 0;
+	template = "textures/numbers/0.xpm";
+	filename = ft_strdup(template);
+	while (i <= 9)
+	{
+		filename[17] = '0' + i;
+		fd = open(filename, O_RDONLY);
+		if (fd == -1)
+			return (1);
+		close(fd);
+		i++;
+	}
+	free(filename);
+	return (0);
 }
 
 void	check_all_images(void)
 {
-	if (check_animation_frames() == 1
-		&& check_game_images() == 1 && check_number_images() == 1)
-		return ;
-	perror("\e[31mError\nImage not found");
-	exit(1);
-	return ;
+	if (check_images() || check_images0() || check_images1()
+		|| check_numbers() || check_animations1() || check_animations())
+	{
+		perror("\e[31mError\nImage not found");
+		exit(1);
+	}
 }
